@@ -1,0 +1,9 @@
+*.class
+.settings/
+.classpath
+.project
+.springBeans
+*.bak
+*-local.properties
+out/
+target/
