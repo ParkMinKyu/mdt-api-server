@@ -1,3 +1,4 @@
+/*
 package kr.niee.mdt.hsqldb;
 
 import java.util.Properties;
@@ -8,7 +9,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class HsqldbServerConfig {
 
-	/*
 	 *  <!-- HSQLDB STARTER -->
      <bean id="hsqldb" class="com.syaku.hsqldb.HSQLDB" init-method="start">
           <constructor-arg>
@@ -32,6 +32,7 @@ public class HsqldbServerConfig {
 		properties.setProperty("server.port", "6001");
 		properties.setProperty("hsqldb.reconfig_logging", "false");
 		return new HsqldbAutoStartService(properties);
-	}*/
 	
 }
+
+	}*/

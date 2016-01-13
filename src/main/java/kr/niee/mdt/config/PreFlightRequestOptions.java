@@ -34,17 +34,14 @@ public class PreFlightRequestOptions {
 			System.out.println(header + " : " + req.getHeader(header));
 		}
 
-		// response 헤더를 request 헤더와 동일하게 만든다. 제한이 필요하다면 필요한 값으로 설정한다.
 		if (StringUtils.hasLength(requestMethods)) {
 			response.setHeader(ACCESS_CONTROL_ALLOW_METHODS, requestMethods);
 		}
 
-		// response 헤더를 request 헤더와 동일하게 만든다. 제한이 필요하다면 필요한 값으로 설정한다.
 		if (StringUtils.hasLength(requestHeaders)) {
 			response.setHeader(ACCESS_CONTROL_ALLOW_HEADERS, requestHeaders);
 		}
 
-		// 브라우저가 preflight 응답을 캐싱하도록 max age를 세팅해준다.
 		response.setHeader(ACCESS_CONTROL_MAX_AGE, DAY_IN_SECONDS.toString());
 	}
 }
