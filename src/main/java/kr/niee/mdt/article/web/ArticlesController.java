@@ -32,7 +32,7 @@ public class ArticlesController{
 		return new ResponseEntity<>(articleService.insertArticle(articleVO),HttpStatus.CREATED);
 	}
 
-	@RequestMapping(method=RequestMethod.PUT, consumes={MediaType.TEXT_PLAIN_VALUE, MediaType.APPLICATION_JSON_VALUE})
+	@RequestMapping(method=RequestMethod.PATCH, consumes={MediaType.TEXT_PLAIN_VALUE, MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<?> updateArticles(@RequestBody ArticleVO articleVO) throws Exception{
 		return new ResponseEntity<>(articleService.updateArticle(articleVO),HttpStatus.ACCEPTED);
 	}
