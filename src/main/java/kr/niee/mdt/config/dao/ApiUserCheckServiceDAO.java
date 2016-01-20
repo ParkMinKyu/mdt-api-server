@@ -1,5 +1,6 @@
 package kr.niee.mdt.config.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,10 @@ public class ApiUserCheckServiceDAO {
 			erdae.printStackTrace();
 		}
 		return result;
+	}
+	
+	public List<Map<String, Object>> getApiUsers(){
+		return template.queryForList("select * from apiuser");
 	}
 	
 }

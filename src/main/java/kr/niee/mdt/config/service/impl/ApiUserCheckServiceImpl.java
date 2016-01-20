@@ -1,5 +1,6 @@
 package kr.niee.mdt.config.service.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import kr.niee.mdt.config.dao.ApiUserCheckServiceDAO;
@@ -21,6 +22,12 @@ public class ApiUserCheckServiceImpl implements ApiUserCheckService{
 		// TODO Auto-generated method stub
 		Map<String, Object> map = apiUserCheckServiceDAO.getApiUser(userKey, origin); 
 		return map!=null?true:false;
+	}
+
+	@Override
+	public List<Map<String, Object>> getApiUsers() {
+		// TODO Auto-generated method stub
+		return apiUserCheckServiceDAO.getApiUsers();
 	}
 	
 }
