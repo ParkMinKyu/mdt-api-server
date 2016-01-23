@@ -1,24 +1,19 @@
 package kr.niee.mdt.scheduler.web;
 
-import java.sql.Timestamp;
-import java.util.Enumeration;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-
-import kr.niee.mdt.scheduler.service.SchedulerService;
-import kr.niee.mdt.scheduler.vo.SchedulerVO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import kr.niee.mdt.scheduler.service.SchedulerService;
+import kr.niee.mdt.scheduler.vo.SchedulerVO;
 
 @RestController(value="scheduler")
 @RequestMapping("/scheduler")
@@ -29,11 +24,7 @@ public class SchedulerController{
 	private SchedulerService schedulerService;
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public ResponseEntity<?> scheduler(@RequestParam long starttime, @RequestParam long endtime){
-		SchedulerVO schedulerVO = new SchedulerVO();
-		schedulerVO.setStarttime(new Timestamp(starttime));
-		schedulerVO.setEndtime(new Timestamp(endtime));
-		
+	public ResponseEntity<?> scheduler(@ModelAttribute SchedulerVO schedulerVO){
 		return new ResponseEntity<>(schedulerService.getScheduler(schedulerVO),HttpStatus.OK);
 	}
 

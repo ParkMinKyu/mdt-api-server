@@ -16,15 +16,15 @@ public class SchedulerDAO {
 	private JdbcTemplate template;
 	
 	public List<Map<String, Object>> getScheduler(SchedulerVO schedulerVO){
-		return template.queryForList("select * from scheduler where (starttime between ? and ?) or (endtime between ? and ?) ", schedulerVO.getStarttime(), schedulerVO.getEndtime(),schedulerVO.getStarttime(), schedulerVO.getEndtime());
+		return template.queryForList("select * from scheduler where writer = ? and (starttime between ? and ?) or (endtime between ? and ?) ", schedulerVO.getWriter(),schedulerVO.getStarttime(), schedulerVO.getEndtime(),schedulerVO.getStarttime(), schedulerVO.getEndtime());
 	}
 	
 	public int insertScheduler(SchedulerVO schedulerVO){
-		return template.update("insert into scheduler values(?, ?, ?, ?, NOW(), NOW(), ?, ?)",schedulerVO.getId(),schedulerVO.getTitle(),schedulerVO.getContents(), schedulerVO.getType(),schedulerVO.isAllDay(),schedulerVO.getWriter());
+		return template.update("insert into scheduler values(?, ?, ?, ?, ?, ?, ?, ?)",schedulerVO.getId(),schedulerVO.getTitle(),schedulerVO.getContents(), schedulerVO.getType(), schedulerVO.getStarttime(), schedulerVO.getEndtime(),schedulerVO.isAllDay(),schedulerVO.getWriter());
 	}
 
 	public int updateScheduler(SchedulerVO schedulerVO){
-		return template.update("update scheduler set title = ? , contents = ? , type = ? , starttime = NOW(), endtime = NOW(), allDay = ? where id = ? ",schedulerVO.getTitle(),schedulerVO.getContents(),schedulerVO.getType(),schedulerVO.isAllDay(),schedulerVO.getId());
+		return template.update("update scheduler set title = ? , contents = ? , type = ? , starttime = ?, endtime = ?, allDay = ? where id = ? ",schedulerVO.getTitle(),schedulerVO.getContents(),schedulerVO.getType(),schedulerVO.getStarttime(),schedulerVO.getEndtime(),schedulerVO.isAllDay(),schedulerVO.getId());
 	}
 
 	public int deleteScheduler(SchedulerVO schedulerVO){
