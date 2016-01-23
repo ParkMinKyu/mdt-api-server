@@ -6,8 +6,9 @@ import java.util.Map;
 import kr.niee.mdt.article.vo.ArticleVO;
 
 public interface ArticleService {
-	public List<Map<String, Object>> getArticles();
-	public int insertArticle(ArticleVO ArticleVO) throws Exception;
-	public int updateArticle(ArticleVO ArticleVO) throws Exception;
-	public int deleteArticle(ArticleVO ArticleVO) throws Exception;
+	public int getArticleCnt();
+	public List<Map<String, Object>> getArticles(Map<String, Object> paramMap);
+	public int insertArticle(ArticleVO articleVO) throws Exception;
+	public int updateArticle(ArticleVO articleVO) throws Exception;
+	public int deleteArticle(ArticleVO articleVO) throws Exception;
 }

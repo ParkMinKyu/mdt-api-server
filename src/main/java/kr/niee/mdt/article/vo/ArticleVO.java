@@ -1,14 +1,14 @@
 package kr.niee.mdt.article.vo;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
 public class ArticleVO {
-/*id int primary key, title varchar(200) not null, contents LONGVARCHAR not null, regtime timestamp, modtime timestamp, writer varchar(200)*/
+/*id int primary key, title varchar(200) not null, contents LONGVARCHAR not null, regtime Date, modtime Date, writer varchar(200)*/
 	private int id;
 	private String title;
 	private String contents;
-	private Timestamp regtime;
-	private Timestamp modtime;
+	private Date regtime;
+	private Date modtime;
 	private String writer;
 	
 	public int getId() {
@@ -29,16 +29,16 @@ public class ArticleVO {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-	public Timestamp getRegtime() {
+	public Date getRegtime() {
 		return regtime;
 	}
-	public void setRegtime(Timestamp regtime) {
+	public void setRegtime(Date regtime) {
 		this.regtime = regtime;
 	}
-	public Timestamp getModtime() {
+	public Date getModtime() {
 		return modtime;
 	}
-	public void setModtime(Timestamp modtime) {
+	public void setModtime(Date modtime) {
 		this.modtime = modtime;
 	}
 	public String getWriter() {

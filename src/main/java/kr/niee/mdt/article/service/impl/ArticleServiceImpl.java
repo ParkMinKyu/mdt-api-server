@@ -19,9 +19,15 @@ public class ArticleServiceImpl implements ArticleService{
 	private ArticleDAO articleDAO;
 	
 	@Override
-	public List<Map<String, Object>> getArticles() {
+	public int getArticleCnt() {
 		// TODO Auto-generated method stub
-		return articleDAO.getArticles();
+		return articleDAO.getArticleCnt();
+	}
+	
+	@Override
+	public List<Map<String, Object>> getArticles(Map<String, Object> paramMap) {
+		// TODO Auto-generated method stub
+		return articleDAO.getArticles(paramMap);
 	}
 
 	@Override
