@@ -68,6 +68,7 @@ public class SpringDataSourceConfigForDev{
 	public DataSourceInitializer dataSourceInitializer(DataSource dataSource) {
 	    ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator();
 	    databasePopulator.addScript(new ClassPathResource("query/schema/schema.sql"));
+	    databasePopulator.addScript(new ClassPathResource("query/schema/data.sql"));
 	    databasePopulator.setIgnoreFailedDrops(true);
 	    databasePopulator.setSqlScriptEncoding("UTF-8");
 	    databasePopulator.setContinueOnError(true);
