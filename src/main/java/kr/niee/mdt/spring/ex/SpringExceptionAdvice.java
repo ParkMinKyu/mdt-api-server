@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.tomcat.util.http.fileupload.FileUploadException;
 import org.springframework.beans.TypeMismatchException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,14 @@ import org.springframework.web.bind.annotation.RestController;
 @ControllerAdvice
 @RestController
 public class SpringExceptionAdvice {
+	
+	@ExceptionHandler(FileUploadException.class)
+	public ResponseEntity<?> exception(FileUploadException exception) {
+		Map<String, String> exMap = new HashMap<String, String>();
+		exMap.put("message", "fileUploadError");
+		exMap.put("localizedMassage", "파일 용량은 5MB를 넘을수 없습니다.");
+		return new ResponseEntity<> (exMap,HttpStatus.BAD_REQUEST);
+	}
 	/*
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<?> exception(Exception exception) {
