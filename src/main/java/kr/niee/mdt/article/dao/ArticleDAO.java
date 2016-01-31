@@ -15,13 +15,13 @@ public class ArticleDAO {
 	@Autowired
 	private JdbcTemplate template;
 	
-	public int getArticleCnt(){
-		return template.queryForObject("select count(id) from article", Integer.class);
+	public int getArticleCnt(Map<String, Object> paramMap){
+		return template.queryForObject("select count(id) from article where writer = ? and categoryid = ?", Integer.class, paramMap.get("writer"), paramMap.get("categoryid"));
 	}
 	
 	public List<Map<String, Object>> getArticles(Map<String, Object> paramMap){
 		return template.queryForList("select * from article where writer = ? and categoryid = ? order by id desc", paramMap.get("writer"), paramMap.get("categoryid"));
-		/*return template.queryForList("select * from article order by id desc limit ?,?", paramMap.get("start"), paramMap.get("end"));*/
+		/*return template.queryForList("select * from article where writer = ? and categoryid = ? order by id desc limit ?,?", paramMap.get("writer"), paramMap.get("categoryid"), paramMap.get("start"), paramMap.get("end"));*/
 	}
 	
 	public int insertArticle(ArticleVO articleVO){

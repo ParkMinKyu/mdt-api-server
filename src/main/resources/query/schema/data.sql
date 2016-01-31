@@ -7643,3 +7643,4 @@ insert into article(title,contents,regtime,modtime,writer,categoryid) values('te
 
 insert into apiuser values('testmyweb', 'http://parkminkyu.github.io', 0);
 insert into apiuser values('testmyweb', 'http://localhost:8080', 0);
+insert into apiuser values('testmyweb', 'http://localhost', 0);

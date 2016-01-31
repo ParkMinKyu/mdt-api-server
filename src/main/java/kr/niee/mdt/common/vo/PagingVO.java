@@ -1,4 +1,4 @@
-package kr.niee.mdt.common;
+package kr.niee.mdt.common.vo;
 
 public class PagingVO {
 	private int currentPage;

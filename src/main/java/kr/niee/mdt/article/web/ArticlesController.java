@@ -2,7 +2,7 @@ package kr.niee.mdt.article.web;
 
 import kr.niee.mdt.article.service.ArticleService;
 import kr.niee.mdt.article.vo.ArticleVO;
-import kr.niee.mdt.common.PagingVO;
+import kr.niee.mdt.common.vo.PagingVO;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,15 +29,16 @@ public class ArticlesController{
 	public ResponseEntity<?> articles(@RequestParam(required=true) int page, @RequestParam(required=true) int pageCount, @RequestParam(required=true) int screenCount, @RequestParam(required=true) String writer, @RequestParam(required=true) int categoryid){
 		Map<String, Object> paramMap = new HashMap<>();
 		Map<String, Object> resultMap = new HashMap<>();
-		int cnt = articleService.getArticleCnt();
-		PagingVO pagingVO = new PagingVO(page == 0 ? 1 : page, cnt, pageCount, screenCount);
-		
 		paramMap.put("writer", writer);
 		paramMap.put("categoryid", categoryid);
+		int cnt = articleService.getArticleCnt(paramMap);
+		
+		PagingVO pagingVO = new PagingVO(page == 0 ? 1 : page, cnt, pageCount, screenCount);
+		
 		paramMap.put("start", pagingVO.getStartCount());
 		paramMap.put("end", pagingVO.getEndCount());
 		
-		resultMap.put("totalCnt", articleService.getArticleCnt());
+		resultMap.put("totalCnt", cnt);
 		resultMap.put("articles", articleService.getArticles(paramMap));
 		return new ResponseEntity<>(resultMap,HttpStatus.OK);
 	}
